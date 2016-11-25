@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.persist.MemoryPersistence"/>
+<fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.MqttClient"/>
+<fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.MqttConnectOptions"/>
+<fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.MqttMessage"/>
+<fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.MqttException"/>
+<fullyQualifiedTypeName name="org.eclipse.paho.client.mqttv3.MqttCallback"/>
+<fullyQualifiedTypeName name="java.lang.Thread"/>
+<fullyQualifiedTypeName name="java.awt.EventQueue"/>
+<fullyQualifiedTypeName name="de.tosca4iot.smarthome.Weather_Sensor.Dashboard.GUI"/>
+<fullyQualifiedTypeName name="de.tosca4iot.smarthome.Weather_Sensor.Start"/>
+<fullyQualifiedTypeName name="de.tosca4iot.smarthome.Weather_Sensor.Subscriber.DataSubscriber"/>
+<fullyQualifiedTypeName name="java.util.Properties"/>
+<fullyQualifiedTypeName name="java.io.InputStream"/>
+<fullyQualifiedTypeName name="java.io.FileNotFoundException"/>
+<fullyQualifiedTypeName name="java.util.Date"/>
+<fullyQualifiedTypeName name="java.io.IOException"/>
+<fullyQualifiedTypeName name="java.net.URL"/>
+<fullyQualifiedTypeName name="de.tosca4iot.smarthome.Weather_Sensor.ConfigLoader.ReadConfigFileMain"/>
+<fullyQualifiedTypeName name="de.tosca4iot.smarthome.Weather_Sensor.ConfigLoader.ConfigReader"/>
+</qualifiedTypeNameHistroy>

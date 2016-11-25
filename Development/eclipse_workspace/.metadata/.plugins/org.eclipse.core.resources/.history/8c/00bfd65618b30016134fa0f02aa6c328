@@ -1,0 +1,39 @@
+package de.tosca4iot.smarthome.Weather_Sensor;
+
+import java.awt.EventQueue;
+import java.io.IOException;
+
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
+import de.tosca4iot.smarthome.Weather_Sensor.ConfigLoader.ConfigReader;
+import de.tosca4iot.smarthome.Weather_Sensor.Dashboard.GUI;
+import de.tosca4iot.smarthome.Weather_Sensor.Subscriber.DataSubscriber;
+
+public class Start{
+	public static DataSubscriber theSubscriber;
+	
+	
+	public static void main(String[] args) {
+		GUI theDashboard = new GUI();
+		theDashboard.setVisible(true);
+		ConfigReader configReader = new ConfigReader("config.properties");
+		try {
+			theSubscriber = new DataSubscriber(theDashboard, configReader.getPropValues("basestation_ip"),
+					configReader.getPropValues("message_broker_port"), configReader.getPropValues("topic"));
+		} catch (IOException e) {
+			e.printStackTrace();
+			theSubscriber = new DataSubscriber(theDashboard, "localhost",
+					"1883", "localhost/weather/#");
+		}
+		Thread t = new Thread(theSubscriber);
+		t.start();
+	}
+}

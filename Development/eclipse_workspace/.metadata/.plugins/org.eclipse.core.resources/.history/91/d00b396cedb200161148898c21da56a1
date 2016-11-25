@@ -1,0 +1,11 @@
+package de.tosca4iot.smarthome.Weather_Sensor.ConfigLoader;
+
+import java.io.IOException;
+
+public class ReadConfigFileMain {
+	public static void main(String[] args) throws IOException {
+		GetPropertyValues properties = new GetPropertyValues();
+		properties.getPropValues();
+		System.out.println(properties);
+	}
+}

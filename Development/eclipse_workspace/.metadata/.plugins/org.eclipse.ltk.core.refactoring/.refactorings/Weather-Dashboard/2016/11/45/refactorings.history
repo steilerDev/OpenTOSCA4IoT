@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename type &apos;Dashboard&apos; to &apos;Dashboard_GUI&apos;&#x0D;&#x0A;- Original project: &apos;Weather-Dashboard&apos;&#x0D;&#x0A;- Original element: &apos;Dashboard&apos;&#x0D;&#x0A;- Renamed element: &apos;Dashboard_GUI&apos;&#x0D;&#x0A;- Update references to refactored element&#x0D;&#x0A;- Update textual occurrences in comments and strings" description="Rename type &apos;Dashboard&apos;" flags="589830" id="org.eclipse.jdt.ui.rename.type" input="/src&lt;{Dashboard.java[Dashboard" matchStrategy="1" name="Dashboard_GUI" qualified="false" references="true" similarDeclarations="false" stamp="1478869119067" textual="false" version="1.0"/>
+</session>

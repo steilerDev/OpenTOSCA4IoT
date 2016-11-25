@@ -1,0 +1,5 @@
+package de.tosca4iot.smarthome.Weather_Sensor.ConfigLoader;
+
+public class ReadConfigFileMain {
+
+}

@@ -1,0 +1,128 @@
+package de.tosca4iot.smarthome.Weather_Sensor;
+
+import java.awt.EventQueue;
+
+import org.eclipse.paho.client.mqttv3.IMqttActionListener;
+import org.eclipse.paho.client.mqttv3.IMqttDeliveryToken;
+import org.eclipse.paho.client.mqttv3.IMqttToken;
+import org.eclipse.paho.client.mqttv3.MqttCallback;
+import org.eclipse.paho.client.mqttv3.MqttClient;
+import org.eclipse.paho.client.mqttv3.MqttConnectOptions;
+import org.eclipse.paho.client.mqttv3.MqttException;
+import org.eclipse.paho.client.mqttv3.MqttMessage;
+import org.eclipse.paho.client.mqttv3.persist.MemoryPersistence;
+
+import de.tosca4iot.smarthome.Weather_Sensor.Dashboard.GUI;
+import de.tosca4iot.smarthome.Weather_Sensor.Subscriber.DataSubscriber;
+
+public class Start implements Runnable {
+	public static DataSubscriber theSubscriber;
+	
+	
+	public static void main(String[] args) {
+		GUI theDashboard = new GUI();
+		theDashboard.setVisible(true);
+		ConfigReader configReader = new ConfigReader("config.properties");
+		theSubscriber = new DataSubscriber(theDashboard,);
+		Thread t = new Thread(theSubscriber);
+		t.start();
+	}
+	public static void subscribe() {
+        String topic        = "MQTT-Test";
+        String content      = "Message from MqttPublishSample";
+        int qos             = 2;
+        String broker       = "tcp://192.168.138.134:1883";
+        String clientId     = "JavaSample";
+        MemoryPersistence persistence = new MemoryPersistence();
+        try {
+            MqttClient sampleClient = new MqttClient(broker, clientId, persistence);
+            MqttConnectOptions connOpts = new MqttConnectOptions();
+            connOpts.setCleanSession(true);
+            System.out.println("Connecting to broker: "+broker);
+            sampleClient.connect(connOpts);
+            System.out.println("Connected");
+            System.out.println("Publishing message: "+content);
+            MqttMessage message = new MqttMessage(content.getBytes());
+            message.setQos(qos);
+            sampleClient.setCallback(new MqttCallback() {
+				
+				@Override
+				public void messageArrived(String topic, MqttMessage message) throws Exception {
+					// TODO Auto-generated method stub
+					System.out.println("Message arrived for the Topic "+topic);
+					System.out.println("Content: "+message);
+					
+				}
+				
+				@Override
+				public void deliveryComplete(IMqttDeliveryToken token) {
+					// TODO Auto-generated method stub
+					
+				}
+				
+				@Override
+				public void connectionLost(Throwable cause) {
+					// TODO Auto-generated method stub
+					
+				}
+			});
+            sampleClient.subscribe(topic );
+            
+            
+            System.out.println("Subscribed");
+            while(true){
+            	
+            }
+
+        } catch(MqttException me) {
+            System.out.println("reason "+me.getReasonCode());
+            System.out.println("msg "+me.getMessage());
+            System.out.println("loc "+me.getLocalizedMessage());
+            System.out.println("cause "+me.getCause());
+            System.out.println("excep "+me);
+            me.printStackTrace();
+        }
+        
+	}
+	
+	public static void publish() {
+		// TODO Auto-generated method stub
+
+        String topic        = "MQTT-Test";
+        String content      = "Message from MqttPublishSample";
+        int qos             = 2;
+        String broker       = "tcp://192.168.138.134:1883";
+        String clientId     = "JavaSample";
+        MemoryPersistence persistence = new MemoryPersistence();
+
+        try {
+            MqttClient sampleClient = new MqttClient(broker, clientId, persistence);
+            MqttConnectOptions connOpts = new MqttConnectOptions();
+            connOpts.setCleanSession(true);
+            System.out.println("Connecting to broker: "+broker);
+            sampleClient.connect(connOpts);
+            System.out.println("Connected");
+            System.out.println("Publishing message: "+content);
+            MqttMessage message = new MqttMessage(content.getBytes());
+            message.setQos(qos);
+            sampleClient.publish(topic, message);
+            System.out.println("Message published");
+            sampleClient.disconnect();
+            System.out.println("Disconnected");
+            System.exit(0);
+        } catch(MqttException me) {
+            System.out.println("reason "+me.getReasonCode());
+            System.out.println("msg "+me.getMessage());
+            System.out.println("loc "+me.getLocalizedMessage());
+            System.out.println("cause "+me.getCause());
+            System.out.println("excep "+me);
+            me.printStackTrace();
+        }
+	}
+	@Override
+	public void run() {
+		// TODO Auto-generated method stub
+		subscribe();
+	}
+
+}
