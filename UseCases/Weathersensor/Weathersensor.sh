@@ -13,6 +13,7 @@ apt-get -y install subversion git
 cd ~
 mkdir $HOME/UseCase
 cd $HOME/UseCase/
+
+#UseCase Installation
 svn export https://github.com/steilerDev/TOSCA4IoT.git/trunk/UseCases/Weathersensor
-pip install freeopcua
 nohup node /home/pi/UseCase/OPC_UA/SensorTag_Connect/sensortag2mqtt.js >>/dev/null 2>>/dev/null &
