@@ -16,4 +16,15 @@ cd $HOME/UseCase/
 
 #UseCase Installation
 svn export https://github.com/steilerDev/TOSCA4IoT.git/trunk/UseCases/Weathersensor
+
+#Create Configuration File
+echo "Please insert the ip address of the TOSCA4IoT basestation"
+read basestation_ip
+echo "Please insert the port of the Message Broker [Standard:1883]"
+read message_broker_port
+cat $HOME/UseCase/Weathersensor/SensorTag_Connect/config.properties <<EOL
+line 1, tcp://${basestation_ip}:${message_broker_port}
+EOL
+
+#Start Application
 nohup node /home/pi/UseCase/OPC_UA/SensorTag_Connect/sensortag2mqtt.js >>/dev/null 2>>/dev/null &
