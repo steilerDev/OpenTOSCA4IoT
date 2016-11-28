@@ -22,8 +22,8 @@ echo "Please insert the ip address of the TOSCA4IoT basestation"
 read basestation_ip
 echo "Please insert the port of the Message Broker [Standard:1883]"
 read message_broker_port
-cat $HOME/UseCase/Weathersensor/SensorTag_Connect/config.properties <<EOL
-line 1, tcp://${basestation_ip}:${message_broker_port}
+cat > $HOME/UseCase/Weathersensor/SensorTag_Connect/config.properties <<EOL
+tcp://${basestation_ip}:${message_broker_port}
 EOL
 
 #Start Application
