@@ -70,16 +70,16 @@ public class DataSubscriber implements Runnable {
 	}
 	private void handleMessages(String topic, MqttMessage message){
 		switch(topic){
-		case "rapi/humidity":
+		case "weather/humidity":
 			this.theDashboard.setHumidityData(message.toString());
 			break;
-		case "rapi/temperature":
+		case "weather/temperature":
 			this.theDashboard.setTemperatureData(message.toString());
 			break;
-		case "rapi/brightness":
+		case "weather/brightness":
 			this.theDashboard.setBrightnessData(message.toString());
 			break;
-		case "rapi/pressure":
+		case "weather/pressure":
 			this.theDashboard.setPressureData(message.toString());
 			break;
 		default:

@@ -8,11 +8,19 @@ import de.tosca4iot.smarthome.Weather_Sensor.Subscriber.DataSubscriber;
 public class Start{
 	public static DataSubscriber theSubscriber;
 	
-	
+	public static String topic;
 	public static void main(String[] args) {
 		GUI theDashboard = new GUI();
 		theDashboard.setVisible(true);
 		ConfigReader configReader = new ConfigReader("config.properties");
+		Start.topic = "weather";
+		try {
+			Start.topic = configReader.getPropValues("topic");
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			Start.topic = "weather";
+			e1.printStackTrace();
+		}
 		try {
 			theSubscriber = new DataSubscriber(theDashboard, configReader.getPropValues("basestation_ip"),
 					configReader.getPropValues("message_broker_port"), configReader.getPropValues("topic"));

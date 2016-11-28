@@ -16,6 +16,8 @@ cd $HOME/UseCase/
 
 #UseCase Installation
 svn export https://github.com/steilerDev/TOSCA4IoT.git/trunk/UseCases/Weathersensor
+cd /home/pi/UseCase/Weathersensor/SensorTag_Connect/
+npm install xtend
 
 #Create Configuration File
 echo "Please insert the ip address of the TOSCA4IoT basestation"
@@ -27,4 +29,4 @@ tcp://${basestation_ip}:${message_broker_port}
 EOL
 
 #Start Application
-nohup node /home/pi/UseCase/OPC_UA/SensorTag_Connect/sensortag2mqtt.js >>/dev/null 2>>/dev/null &
+nohup node /home/pi/UseCase/Weathersensor/SensorTag_Connect/sensortag2mqtt.js >>/dev/null 2>>/dev/null &
