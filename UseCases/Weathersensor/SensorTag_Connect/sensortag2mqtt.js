@@ -83,7 +83,7 @@ function mqttInit() {
         mqttClient = mqtt.connect(cfg.url);
         mqttClient.on('connect', function () {
             console.log('connected to TOSCA4IoT-Server');
-            mqttClient.publish('rapi/connected','true');
+            mqttClient.publish('weather/connected','true');
         });
         mqttClient.on('error', function (err) {
             console.log('error' + err);
@@ -99,8 +99,8 @@ function mqttInit() {
 function mqttSend(data) {
     for(var key in data) {
         var value = data[key];
-        mqttClient.publish('rapi/'+key, value+'');
-        console.log('Topic: '+'rapi/'+key +' data:' +value)
+        mqttClient.publish('weather/'+key, value+'');
+        console.log('Topic: '+'weather/'+key +' data:' +value)
     }
 
     var payload = {

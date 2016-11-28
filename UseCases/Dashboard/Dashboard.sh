@@ -23,10 +23,10 @@ echo "Please insert the topic on which the dashboard will subscribe to"
 read topic
 
 cat > $HOME/UseCase/Dashboard/config.properties <<EOL
-line 1, ${basestation_ip}
-line 2, ${message_broker_port}
-line 2, ${topic}
-line 4, line
+basestation_ip=${basestation_ip}
+message_broker_port=${message_broker_port}
+topic=${topic}
+
 EOL
 
 #Start Application
